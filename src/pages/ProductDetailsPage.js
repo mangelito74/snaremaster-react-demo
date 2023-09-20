@@ -1,6 +1,6 @@
 import { useParams, json } from "react-router-dom";
 
-import ProductDetails from "../components/Product/ProductDetails"
+import ProductDetails from "../components/Products/ProductDetails"
 
 import { getProduct } from "../lib/data";
 

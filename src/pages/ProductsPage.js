@@ -1,4 +1,4 @@
-import ProductList from "../components/Product/ProductList";
+import ProductList from "../components/Products/ProductList";
 
 import { products } from "../lib/data";
 
