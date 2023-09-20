@@ -1,0 +1,32 @@
+.details {
+  display: flex;
+}
+
+.details img {
+  width: 40%;
+}
+
+.details h1 {
+  text-align: center;
+}
+
+.actions {
+  text-align: center;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  color: #202020;
+  border: 1px solid #202020;
+  background-color: white;
+  padding: 0.3rem;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #19632d;
+  color: white;
+}
