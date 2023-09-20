@@ -1,0 +1,54 @@
+.info {
+  margin-bottom: 2rem;
+}
+
+.form div {
+  margin: 1rem 0;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.form label,
+.form input {
+  display: block;
+}
+
+.form label {
+  font-weight: bold;
+  flex: 1;
+  color: #464646;
+  margin-bottom: 0.5rem;
+}
+
+.form input {
+  flex: 3;
+  font: inherit;
+  padding: 0.35rem 0.35rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: #4f005f;
+  background: #f6dbfc;
+}
+
+.form.invalid input {
+  border-color: red;
+  background: #fbdada;
+}
+
+.autofill {
+  font-size: smaller;
+  padding: 0.5rem 2rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .form div {
+    align-items: center;
+    flex-direction: row;
+  }
+}

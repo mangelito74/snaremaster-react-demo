@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import RootLayout from "./components/Layout/RootLayout";
@@ -6,6 +7,10 @@ import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import FavoritesPage from "./pages/FavoritesPage";
+import LoginForm from "./components/Authentication/LoginForm";
+
+import AuthenticationContext from "./store/context-api/authentication-context";
+import useModal from "./store/custom-hooks/use-modal";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +18,6 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      // { path: "", element: <HomePage /> },
       { index: true, element: <HomePage /> }, // index = true sets this to default route of parent (i.e. "/")
       { path: "products", element: <ProductsPage /> },
       { path: "products/:productId", element: <ProductDetailsPage /> },
@@ -23,7 +27,46 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  const [loginModalIsOpen, toggleLoginModal] = useModal();
+
+  useEffect(() => {
+    const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
+    if (storedUserLoggedInInformation === "1") {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const loginHandler = (email, password) => {
+    // We should of course check email and password
+    // But it's just a dummy/demo anyways
+    localStorage.setItem("isLoggedIn", "1");
+    setIsLoggedIn(true);
+  };
+
+  const logoutHandler = () => {
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+  };
+
+  return (
+    <AuthenticationContext.Provider
+      value={{
+        isLoggedIn: isLoggedIn,
+        onLogout: logoutHandler,
+        showLoginForm: toggleLoginModal,
+      }}
+    >
+      <LoginForm
+        show={loginModalIsOpen}
+        acceptButtonOnClick={loginHandler}
+        cancelButtonOnClick={toggleLoginModal}
+      />
+
+      <RouterProvider router={router} />
+    </AuthenticationContext.Provider>
+  );
 }
 
 export default App;
