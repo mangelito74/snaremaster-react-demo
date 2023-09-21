@@ -1,0 +1,44 @@
+.favorites-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem 1rem 0;
+}
+
+.container img {
+  width: 10rem;
+}
+
+.container h4 {
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  padding: 1rem;
+  border-top: 1px solid #333;
+}
+
+.actions {
+  text-align: center;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  color: #202020;
+  border: 1px solid #202020;
+  background-color: white;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #19632d;
+  color: white;
+}

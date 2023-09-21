@@ -42,14 +42,29 @@ const LoginForm = (props) => {
     setFormIsValid(true);
   };
 
+  const clearForm = () => {
+    setEnteredEmail("");
+    setEnteredPassword("");
+  };
+
+  const acceptButtonOnClickHandler = () => {
+    props.acceptButtonOnClick();
+    clearForm();
+  };
+
+  const cancelButtonOnClickHandler = () => {
+    props.cancelButtonOnClick();
+    clearForm();
+  };
+
   return (
     <ModalDialog
       show={props.show}
       title="Login"
       acceptButtonText="Login"
-      acceptButtonOnClick={props.acceptButtonOnClick}
+      acceptButtonOnClick={acceptButtonOnClickHandler}
       hasCancelButton={true}
-      cancelButtonOnClick={props.cancelButtonOnClick}
+      cancelButtonOnClick={cancelButtonOnClickHandler}
       formIsValid={formIsValid}
     >
       <div className={classes.info}>

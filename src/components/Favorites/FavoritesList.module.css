@@ -1,0 +1,12 @@
+.container {
+  padding: 1rem 2rem;
+}
+
+.container h1 {
+  margin-bottom: 1rem;
+}
+
+.placeholder {
+  margin: 4rem;
+  text-align: center;
+}

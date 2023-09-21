@@ -47,7 +47,13 @@
 }
 
 .actions button:hover,
-.actions button:active {
+.actions button:active,
+.actions button.favorite:hover {
   background-color: #19632d;
+  color: white;
+}
+
+.actions button.favorite {
+  background-color: #4f005f;
   color: white;
 }

@@ -10,6 +10,7 @@ import FavoritesPage from "./pages/FavoritesPage";
 import LoginForm from "./components/Authentication/LoginForm";
 
 import AuthenticationContext from "./store/context-api/authentication-context";
+import configureFavoritesStore from "./store/custom-hooks/favorite-ids-store";
 import useModal from "./store/custom-hooks/use-modal";
 
 const router = createBrowserRouter([
@@ -26,9 +27,11 @@ const router = createBrowserRouter([
   },
 ]);
 
+configureFavoritesStore();
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
   const [loginModalIsOpen, toggleLoginModal] = useModal();
 
   useEffect(() => {

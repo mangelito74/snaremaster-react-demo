@@ -7,6 +7,7 @@ import MessageBox from "../UI/MessageBox";
 
 import AuthenticationContext from "../../store/context-api/authentication-context";
 import useModal from "../../store/custom-hooks/use-modal";
+import { useStore } from "../../store/custom-hooks/store";
 
 import classes from "./MainNavigation.module.css";
 
@@ -16,6 +17,9 @@ const MainNavigation = () => {
   const [message, setMessage] = useState(null);
 
   const authenticationContext = useContext(AuthenticationContext);
+
+  const state = useStore()[0];
+  const numberOfFavorites = state.favoriteIds.length;
 
   const logoutHandler = () => {
     authenticationContext.onLogout();
@@ -35,6 +39,11 @@ const MainNavigation = () => {
             <li>
               <Link to="/products">Products</Link>
             </li>
+            {authenticationContext.isLoggedIn && (
+              <li>
+                <Link to="/favorites">Favorites ({numberOfFavorites})</Link>
+              </li>
+            )}
             {!authenticationContext.isLoggedIn && (
               <li>
                 <Button onClick={authenticationContext.showLoginForm}>

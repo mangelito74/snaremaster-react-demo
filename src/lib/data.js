@@ -37,6 +37,15 @@ const DUMMY_PRODUCTS = [
   },
   {
     id: "p5",
+    name: "DW Icon Snare Queen Inlay Legend",
+    description:
+      "Surface made from different types of wood, laser cut, Maple HVLT Kessel, High gloss finish, Gold hardware",
+    image:
+      "https://cdn.starwebserver.se/shops/trumslagaren/files/cache/gw39258_grande.jpg?_=14761967916",
+    price: 2312,
+  },
+  {
+    id: "p6",
     name: "Ludwig Carl Palmer Snare Drum",
     description:
       "The Carl Palmer Snare 14″x3.7″ – A truly-personlized instrument. Carl’s “Venus” is crafted for volume and intricate clarity. Its beaded-brass 3.7″x14″",
@@ -45,7 +54,7 @@ const DUMMY_PRODUCTS = [
     price: 589,
   },
   {
-    id: "p6",
+    id: "p7",
     name: "Gretsch Snare Drum Full Range",
     description:
       "Black Nickel over Steel, 1,2 mm steel shell, 45° bearing edge, 2.3 mm triple flanged hoops, 20-spiral snare wire, Remo heads",
