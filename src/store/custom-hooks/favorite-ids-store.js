@@ -4,7 +4,8 @@ const configureStore = () => {
   const storedUserFavoriteIds = localStorage.getItem("favoriteIds");
   let favoriteIds = [];
   if (storedUserFavoriteIds !== null) {
-    favoriteIds = storedUserFavoriteIds.split(",");
+    // .filter(e => e) removes empty items
+    favoriteIds = storedUserFavoriteIds.split(",").filter(e => e);
   }
 
   const actions = {
