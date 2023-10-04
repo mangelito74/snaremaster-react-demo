@@ -1,6 +1,7 @@
 import { Fragment, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
+import CartButton from "../Cart/CartButton";
 import Button from "../UI/Button";
 import ModalDialog from "../UI/ModalDialog";
 import MessageBox from "../UI/MessageBox";
@@ -44,6 +45,9 @@ const MainNavigation = () => {
                 <Link to="/favorites">Favorites ({numberOfFavorites})</Link>
               </li>
             )}
+            <li>
+              <CartButton />
+            </li>
             {!authenticationContext.isLoggedIn && (
               <li>
                 <Button onClick={authenticationContext.showLoginForm}>

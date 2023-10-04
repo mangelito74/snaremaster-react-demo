@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { useStore } from "../../store/custom-hooks/store";
+import { cartActions } from "../../store/redux/cart-slice";
 
 import classes from "./FavoriteItem.module.css";
 
@@ -13,9 +15,17 @@ const FavoriteItem = (props) => {
     dispatch("TOGGLE_FAVORITE", id);
   };
 
+  const reduxDispatch = useDispatch();
+
   const addToCartHandler = () => {
-    //TODO
-    alert("TODO: Add to cart!");
+    reduxDispatch(
+      cartActions.addItemToCart({
+        id,
+        name,
+        image,
+        price,
+      })
+    );
   };
 
   return (

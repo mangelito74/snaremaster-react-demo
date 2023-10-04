@@ -1,0 +1,55 @@
+.item {
+  display: block;
+  padding: 1rem;
+  border-top: 1px solid #333;
+}
+
+.item:last-of-type {
+  border-bottom: 1px solid #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container img {
+  width: 7rem;
+}
+
+.quantity {
+  display: flex;
+  height: fit-content;
+  align-items: center;
+  font-size: large;
+}
+
+.actions {
+  display: flex;
+  text-align: center;
+  height: fit-content;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  color: #202020;
+  border: 1px solid #202020;
+  background-color: white;
+  border-radius: 4px;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #19632d;
+  color: white;
+}
+
+.price {
+  text-align: right;
+  font-size: large;
+  font-weight: 600;
+}

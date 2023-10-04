@@ -1,5 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { cartActions } from "../../store/redux/cart-slice";
 
 import Card from "../UI/Card";
 
@@ -16,9 +19,17 @@ const ProductItem = (props) => {
 
   const authenticationContext = useContext(AuthenticationContext);
 
+  const reduxDispatch = useDispatch();
+
   const addToCartHandler = () => {
-    //TODO
-    alert("TODO: Add to Cart!");
+    reduxDispatch(
+      cartActions.addItemToCart({
+        id,
+        name,
+        image,
+        price,
+      })
+    );
   };
 
   const toggleFavoritesHandler = () => {

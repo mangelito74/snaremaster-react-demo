@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import RootLayout from "./components/Layout/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
@@ -12,6 +13,9 @@ import LoginForm from "./components/Authentication/LoginForm";
 import AuthenticationContext from "./store/context-api/authentication-context";
 import configureFavoritesStore from "./store/custom-hooks/favorite-ids-store";
 import useModal from "./store/custom-hooks/use-modal";
+import { uiActions } from "./store/redux/ui-slice";
+
+import CartForm from "./components/Cart/CartForm";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +38,9 @@ function App() {
 
   const [loginModalIsOpen, toggleLoginModal] = useModal();
 
+  const dispatch = useDispatch();
+  const cartModalIsOpen = useSelector((state) => state.uiReducer.cartIsVisible);
+
   useEffect(() => {
     const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
     if (storedUserLoggedInInformation === "1") {
@@ -53,6 +60,14 @@ function App() {
     setIsLoggedIn(false);
   };
 
+  const cartAcceptHandler = () => {
+    alert("Thank you for you order!");
+  };
+
+  const toggleCartModal = () => {
+    dispatch(uiActions.toggleCartIsVisible());
+  };
+
   return (
     <AuthenticationContext.Provider
       value={{
@@ -65,6 +80,12 @@ function App() {
         show={loginModalIsOpen}
         acceptButtonOnClick={loginHandler}
         cancelButtonOnClick={toggleLoginModal}
+      />
+
+      <CartForm
+        show={cartModalIsOpen}
+        acceptButtonOnClick={cartAcceptHandler}
+        cancelButtonOnClick={toggleCartModal}
       />
 
       <RouterProvider router={router} />
