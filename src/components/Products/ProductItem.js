@@ -2,11 +2,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { cartActions } from "../../store/redux/cart-slice";
-
 import Card from "../UI/Card";
 
 import { useStore } from "../../store/custom-hooks/store";
+import { cartActions } from "../../store/redux/cart-slice";
 import AuthenticationContext from "../../store/context-api/authentication-context";
 
 import classes from "./ProductItem.module.css";
