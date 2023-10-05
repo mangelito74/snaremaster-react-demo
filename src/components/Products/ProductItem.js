@@ -37,7 +37,7 @@ const ProductItem = (props) => {
 
   return (
     <li>
-      <Card>
+      <Card hover="true">
         <div className={classes["items-container"]}>
           <Link to={"/products/" + id} className={classes.link}>
             <div className={classes.image}>
