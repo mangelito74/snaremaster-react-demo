@@ -1,4 +1,4 @@
-import { Fragment, useState, useContext } from "react";
+import { Fragment, useState, useRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import CartButton from "../Cart/CartButton";
@@ -17,10 +17,33 @@ const MainNavigation = () => {
   const [messageModalIsOpen, toggleMessageModal] = useModal();
   const [message, setMessage] = useState(null);
 
+  const [favoritesBadgeIsHighlighted, setFavoritesBadgeIsHighlighted] =
+    useState(false);
+
   const authenticationContext = useContext(AuthenticationContext);
 
   const state = useStore()[0];
   const numberOfFavorites = state.favoriteIds.length;
+
+  const firstRender = useRef(true);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+
+    setFavoritesBadgeIsHighlighted(true);
+
+    const timer = setTimeout(() => {
+      setFavoritesBadgeIsHighlighted(false);
+    }, 300);
+
+    //Cleanup function
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [numberOfFavorites, firstRender]);
 
   const logoutHandler = () => {
     authenticationContext.onLogout();
@@ -28,6 +51,10 @@ const MainNavigation = () => {
     setMessage("You are now logged out!");
     toggleMessageModal();
   };
+
+  const favoritesBadgeClasses = `${classes.badge} ${
+    favoritesBadgeIsHighlighted ? classes.bump : ""
+  }`;
 
   return (
     <Fragment>
@@ -42,7 +69,14 @@ const MainNavigation = () => {
             </li>
             {authenticationContext.isLoggedIn && (
               <li>
-                <Link to="/favorites">Favorites ({numberOfFavorites})</Link>
+                <Link to="/favorites">
+                  <div className={classes.favorites}>
+                    <span>Favorites</span>
+                    <span className={favoritesBadgeClasses}>
+                      {numberOfFavorites}
+                    </span>
+                  </div>
+                </Link>
               </li>
             )}
             <li>
