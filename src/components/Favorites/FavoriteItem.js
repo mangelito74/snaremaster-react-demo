@@ -28,16 +28,19 @@ const FavoriteItem = (props) => {
     );
   };
 
+  const fontAwesomeRemove = `${classes["fa-remove"]} fa-solid fa-circle-xmark`;
+  const removeIcon = <i className={fontAwesomeRemove}></i>;
+
+  const fontAwesomeCart = `${classes["fa-cart"]} fa fa-cart-plus`;
+  const cartIcon = <i className={fontAwesomeCart}></i>;
+
   return (
-    <li className={classes.item}>
-      <div className={classes["favorites-container"]}>
+    <li>
+      <div className={classes.item}>
         <div className={classes["container"]}>
           <Link to={"/products/" + id}>
             <img src={image} alt={name} />
           </Link>
-          <div className={classes.actions}>
-            <button onClick={unFavoriteHandler}>Un-favorite</button>
-          </div>
         </div>
         <Link to={"/products/" + id}>
           <div className={classes["container"]}>
@@ -46,9 +49,15 @@ const FavoriteItem = (props) => {
             <b>${price.toFixed(2)}</b>
           </div>
         </Link>
-      </div>
-      <div className={classes.actions}>
-        <button onClick={addToCartHandler}>Add to Cart</button>
+        <div className={classes.actions}>
+          <div className={classes.remove} onClick={unFavoriteHandler}>
+            {removeIcon}
+          </div>
+          <button className={classes.add} onClick={addToCartHandler}>
+            <span>Add to Cart</span>
+            <span>{cartIcon}</span>
+          </button>
+        </div>
       </div>
     </li>
   );

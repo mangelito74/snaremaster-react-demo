@@ -1,6 +1,9 @@
-.favorites-container {
+.item {
   display: grid;
   grid-template-columns: auto auto auto;
+  padding: 1rem;
+  border-top: 1px solid #333;
+  position: relative;
 }
 
 .container {
@@ -17,10 +20,13 @@
   margin: 0;
 }
 
-.item {
-  display: flex;
-  padding: 1rem;
-  border-top: 1px solid #333;
+.fa-remove {
+  margin-left: 0.5rem;
+}
+
+.fa-cart {
+  font-size: 1.4rem;
+  margin-left: 0.5rem;
 }
 
 .actions {
@@ -34,7 +40,34 @@
   border: 1px solid #202020;
   background-color: white;
   border-radius: 4px;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actions button > span {
+  display: flex;
+}
+
+.remove {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem !important;
+  color: #701c16 !important;
+  background-color: white !important;
+}
+
+.remove:hover,
+.remove:active {
+  color: #a83027 !important;
+  background-color: white !important;
+}
+
+.add {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
 }
 
 .actions button:hover,

@@ -1,5 +1,11 @@
+.container {
+  position: relative;
+  padding: 0.5rem;
+}
+
 .details {
   display: flex;
+  column-gap: 1rem;
 }
 
 .details img {
@@ -9,6 +15,19 @@
 
 .details h1 {
   text-align: center;
+}
+
+.fa-favorite {
+  font-size: 2rem;
+  z-index: 100;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.fa-cart {
+  font-size: 1.4rem;
+  margin-left: 0.5rem;
 }
 
 .actions {
@@ -21,13 +40,17 @@
   color: #202020;
   border: 1px solid #202020;
   background-color: white;
-  padding: 0.3rem;
   border-radius: 4px;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
 }
 
-.actions button:last-of-type {
-  margin-top: 0.5rem;
+.actions button > span {
+  display: flex;
 }
 
 .actions button:hover,

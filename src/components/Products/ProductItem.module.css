@@ -2,6 +2,19 @@
   display: grid;
   align-content: space-between;
   height: 100%;
+  position: relative;
+}
+
+.fa-favorite {
+  font-size: 1.4rem;
+  z-index: 100;
+  position: absolute;
+  right: 0;
+}
+
+.fa-cart {
+  font-size: 1.3rem;
+  margin-left: 0.5rem;
 }
 
 .link {
@@ -9,6 +22,7 @@
   grid-template-rows: 120px 130px 35px;
   justify-items: center;
   text-align: center;
+  padding-top: 1rem;
 }
 
 .link img {
@@ -23,8 +37,6 @@
   width: 10rem;
   height: 10rem;
   overflow: hidden;
-  border-top-right-radius: 6px;
-  border-top-left-radius: 6px;
 }
 
 .actions {
@@ -40,20 +52,18 @@
   padding: 0.3rem;
   border-radius: 4px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.actions button:last-of-type {
-  margin-top: 0.5rem;
+.actions button > span {
+  display: flex;
 }
 
 .actions button:hover,
 .actions button:active,
 .actions button.favorite:hover {
   background-color: #19632d;
-  color: white;
-}
-
-.actions button.favorite {
-  background-color: #4f005f;
   color: white;
 }

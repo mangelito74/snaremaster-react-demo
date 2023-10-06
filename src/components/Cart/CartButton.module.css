@@ -5,6 +5,14 @@
   align-items: center;
 }
 
+.button > span {
+  display: flex;
+}
+
+.fa-cart {
+  font-size: 1.6rem;
+}
+
 .badge {
   background-color: #ffffff;
   color: #202020;

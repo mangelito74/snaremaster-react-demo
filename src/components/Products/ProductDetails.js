@@ -34,26 +34,34 @@ const ProductDetails = (props) => {
     dispatch("TOGGLE_FAVORITE", id);
   };
 
+  const fontAwesomeFavorite = `${classes["fa-favorite"]} ${
+    isFavorite ? "fa-solid" : "fa-regular"
+  } fa-heart`;
+  const favoriteIcon = (
+    <i className={fontAwesomeFavorite} onClick={toggleFavoritesHandler}></i>
+  );
+
+  const fontAwesomeCart = `${classes["fa-cart"]} fa fa-cart-plus`;
+  const cartIcon = <i className={fontAwesomeCart}></i>;
+
   return (
     <Card>
-      <h1>{name}</h1>
-      <div className={classes.details}>
-        <img src={image} alt={name} />
-        <div>
-          <p>{description}</p>
-          <p>
-            <b>${price.toFixed(2)}</b>
-          </p>
-          <div className={classes.actions}>
-            <button onClick={addToCartHandler}>Add to Cart</button>
-            {authenticationContext.isLoggedIn && (
-              <button
-                className={isFavorite ? classes.favorite : null}
-                onClick={toggleFavoritesHandler}
-              >
-                {isFavorite ? "Un-Favorite" : "Add to Favorites"}
+      <div className={classes.container}>
+        <h1>{name}</h1>
+        {authenticationContext.isLoggedIn && favoriteIcon}
+        <div className={classes.details}>
+          <img src={image} alt={name} />
+          <div>
+            <p>{description}</p>
+            <p>
+              <b>${price.toFixed(2)}</b>
+            </p>
+            <div className={classes.actions}>
+              <button onClick={addToCartHandler}>
+                <span>Add to Cart</span>
+                <span>{cartIcon}</span>
               </button>
-            )}
+            </div>
           </div>
         </div>
       </div>

@@ -39,9 +39,12 @@ const CartButton = () => {
     buttonIsHighlighted ? classes.bump : ""
   }`;
 
+  const fontAwesomeCart = `${classes["fa-cart"]} fa-solid fa-cart-shopping`;
+  const cartIcon = <i className={fontAwesomeCart}></i>;
+
   return (
     <Button className={buttonClasses} onClick={toggleCartHandler}>
-      <span>My Cart</span>
+      <span>{cartIcon}</span>
       <span className={classes.badge}>{cartQuantity}</span>
     </Button>
   );

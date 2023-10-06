@@ -35,10 +35,22 @@ const ProductItem = (props) => {
     dispatch("TOGGLE_FAVORITE", id);
   };
 
+  const fontAwesomeFavorite = `${classes["fa-favorite"]} ${
+    isFavorite ? "fa-solid" : "fa-regular"
+  } fa-heart`;
+
+  const favoriteIcon = (
+    <i className={fontAwesomeFavorite} onClick={toggleFavoritesHandler}></i>
+  );
+
+  const fontAwesomeCart = `${classes["fa-cart"]} fa fa-cart-plus`;
+  const cartIcon = <i className={fontAwesomeCart}></i>;
+
   return (
     <li>
       <Card hover="true">
         <div className={classes["items-container"]}>
+          {authenticationContext.isLoggedIn && favoriteIcon}
           <Link to={"/products/" + id} className={classes.link}>
             <div className={classes.image}>
               <img src={image} alt={name} />
@@ -49,15 +61,10 @@ const ProductItem = (props) => {
             </div>
           </Link>
           <div className={classes.actions}>
-            <button onClick={addToCartHandler}>Add to Cart</button>
-            {authenticationContext.isLoggedIn && (
-              <button
-                className={isFavorite ? classes.favorite : null}
-                onClick={toggleFavoritesHandler}
-              >
-                {isFavorite ? "Un-Favorite" : "Add to Favorites"}
-              </button>
-            )}
+            <button onClick={addToCartHandler}>
+              <span>Add to Cart</span>
+              <span>{cartIcon}</span>
+            </button>
           </div>
         </div>
       </Card>
